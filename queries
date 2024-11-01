@@ -1,0 +1,23 @@
+1. query for get all employee under all manager
+mysql> select * from manager m join employee e on m.mgr_id=e.mgr_id order by m.mgr_id , e.emp_id;
+
+
+2. how many employee under any particular manager
+mysql> select count(*) from manager m join  employee e on m.mgr_id=e.mgr_id where m.first_name='Ram';
+
+3. get all manager details
+mysql> select * from manager;
+
+4. find employee with no manager
+mysql> select * from employee where mgr_id is null;
+
+5. function to call full name
+delimiter $$
+create function get_name(first varchar(40), last varchar(40))
+  -> returns varchar (90)
+  -> deterministic
+  -> begin
+  -> return concat(first, ' ' , last)
+  -> ;
+  -> end $$
+delimiter;
